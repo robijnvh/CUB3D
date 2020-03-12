@@ -1,0 +1,15 @@
+{
+	"files.associations": {
+		"mlx.h": "c",
+		"cub3d.h": "c",
+		"ostream": "c",
+		"cstdio": "c",
+		"__bit_reference": "c",
+		"algorithm": "c",
+		"bitset": "c",
+		"chrono": "c",
+		"unordered_map": "c",
+		"memory": "c",
+		"utility": "c"
+	}
+}
