@@ -6,7 +6,7 @@
 /*   By: rvan-hou <rvan-hou@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/19 12:54:10 by rvan-hou       #+#    #+#                */
-/*   Updated: 2020/03/12 18:16:36 by rvan-hou      ########   odam.nl         */
+/*   Updated: 2020/03/13 14:35:29 by rvan-hou      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,4 +83,13 @@ int		check_char(char c, t_map *map)
 	if (c == '\n')
 		return (1);
 	return (0);
+}
+
+int		check_char_middle(char c)
+{
+	if (c == '1' || c == '2' || c == 'N' || c == 'S'
+	|| c == 'E' || c == 'W' || c == '0')
+		return (1);
+	else
+		return (0);
 }

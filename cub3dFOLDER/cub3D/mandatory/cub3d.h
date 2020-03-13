@@ -6,7 +6,7 @@
 /*   By: rvan-hou <rvan-hou@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/09 16:04:08 by rvan-hou       #+#    #+#                */
-/*   Updated: 2020/03/12 18:36:50 by rvan-hou      ########   odam.nl         */
+/*   Updated: 2020/03/13 15:35:30 by rvan-hou      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,11 +191,12 @@ typedef struct		s_vars
 	t_list			t;
 	t_move			m;
 }					t_vars;
-/*main */
+
 int					main(int argc, char **argv);
-/* libft utils */
+
 char				**ft_split(char const *s, char c);
 char				*ft_strdup(const char *src);
+char				*ft_strdup2(const char *src);
 char				*ft_strjoin(char const *s1, char const *s2);
 int					ft_strlen(const char *str);
 int					ft_strlen2(const char *str, int i);
@@ -205,16 +206,18 @@ void				ft_putchar(char c);
 int					ft_atoi(const char *str);
 void				ft_putstr(char *s);
 void				ft_putnbr(int n);
-/* get next line utils */
+
 char				*ft_strjoin_gnl(char const *s1, char const *s2);
 int					get_next_line(int fd, char **line);
-/* map checker and get arguments */
+
 int					check_map(t_map *map, t_data *data);
+int					check_all_lines(char *s, int end);
 void				find_max_columns(t_map *map, t_data *data, int i);
 int					scan_map(t_data *data, t_vars *win);
 int					init_arguments(int argc, char **argv, t_data *data);
 int					check_file(char *str);
 int					check_char(char c, t_map *map);
+int					check_char_middle(char c);
 int					makearray(t_data *data, t_map *map);
 int					store_arguments(char *buf, t_data *data);
 void				check_arguments(t_map *map, t_data *data);
@@ -225,7 +228,9 @@ int					arguments_complete(t_data *data);
 int					check_file_type(char *str);
 int					check_double(t_data *data, char c);
 void				fill_spaces(t_map *map, t_data *data);
-/* gamewindow */
+int					get_color_data(char *buf, t_data *data);
+int					get_color_data2(char *buf, t_data *data);
+
 void				init_three_d_map(t_vars *win);
 int					display_map_window(t_data *data, t_map *map);
 void				set_orientation(char c, t_vars *win, int x, int y);
@@ -242,16 +247,16 @@ void				set_ceiling(t_vars *win, int i, double x1);
 void				set_floor(t_vars *win, int i, double x1);
 void				move_player(t_vars *win, double move, double rotate,
 					int reverse);
-/* raycasting */
+
 void				find_all_hits(t_vars *win, double tmp);
 void				create_three_d_map(t_vars *win, double x, double tmp);
 void				clear_all_data(t_vars *win);
 void				put_texture(t_vars *win, double x1, double size);
-/* bmp */
+
 void				create_bmp(char *name, char *addr, int width, int height);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 int					return_error(char *s, int i);
-/* sprite */
+
 void				make_sprite(t_vars *win, float distance, float on_wall,
 					int x);
 void				hit_sprite_x(t_vars *win);

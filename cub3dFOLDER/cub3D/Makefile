@@ -6,7 +6,7 @@
 #    By: rvan-hou <rvan-hou@student.42.fr>            +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/01/16 14:45:59 by rvan-hou       #+#    #+#                 #
-#    Updated: 2020/03/12 17:43:46 by rvan-hou      ########   odam.nl          #
+#    Updated: 2020/03/13 13:57:04 by rvan-hou      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,14 +16,14 @@ CFILES =	cub3d.c map.c store_utils.c store_arguments.c utils/get_next_line/get_n
 		utils/get_next_line/get_next_line_utils.c utils/ft_atoi.c utils/ft_split.c \
 		utils/ft_strdup.c utils/ft_strjoin.c utils/ft_strlen.c utils/ft_putnbr.c \
 		utils/ft_putchar.c utils/ft_putstr.c utils/ft_strncmp.c map_valid.c \
-		window.c scan_map.c create_bmp.c initialize.c \
+		window.c scan_map.c create_bmp.c initialize.c init_textures.c store_utils2.c\
 		textures.c tex_utils.c sprite_hit.c sprite_utils.c raycasting.c move.c check_map.c \
 		
 SRCS = $(addprefix mandatory/,$(CFILES))
 
 OBJS = $(SRCS:.c=.o)
 
-CC = gcc -Ofast -Wall -Wextra -Werror -I.
+CC = gcc -O3 -Wall -Wextra -Werror -I.
 
 LIBS = -L mlx -lmlx -framework OpenGL -framework AppKit -lm
 

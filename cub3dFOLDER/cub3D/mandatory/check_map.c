@@ -6,7 +6,7 @@
 /*   By: rvan-hou <rvan-hou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 10:28:09 by rvan-hou          #+#    #+#             */
-/*   Updated: 2020/03/12 16:11:45 by rvan-hou         ###   ########.fr       */
+/*   Updated: 2020/03/13 14:37:12 by rvan-hou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,7 @@ int		check_middle2(t_map *map, int y, int x)
 {
 	while (x < ft_strlen(map->array[y]))
 	{
-		if (map->array[y][x] == '1' || map->array[y][x] == '2'
-		|| map->array[y][x] == 'N' || map->array[y][x] == 'S'
-		|| map->array[y][x] == 'E' || map->array[y][x] == 'W'
-		|| map->array[y][x] == '0')
+		if (check_char_middle(map->array[y][x]) == 1)
 			x++;
 		else if (map->array[y][x] == ' ')
 		{

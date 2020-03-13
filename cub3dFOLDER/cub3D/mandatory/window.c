@@ -6,7 +6,7 @@
 /*   By: rvan-hou <rvan-hou@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/03 10:42:14 by rvan-hou       #+#    #+#                */
-/*   Updated: 2020/03/12 19:09:13 by rvan-hou      ########   odam.nl         */
+/*   Updated: 2020/03/13 17:06:30 by rvan-hou      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,8 @@ int			press_key(int key, t_vars *win)
 		move_player(win, 0, 0, 1);
 	if (key == ESC)
 	{
-		mlx_destroy_window(win->mlx, win->win);
+		mlx_destroy_window(win->mlx2, win->win2);
+		write(1, "GAME CLOSED\n", 12);
 		exit(0);
 	}
 	set_rays(win);
@@ -75,6 +76,7 @@ int			display_map_window(t_data *data, t_map *map)
 
 	win.map = map;
 	win.data = data;
+	init_three_d_map(&win);
 	win.angle = 0.0;
 	win.window_mid = win.data->rh / 2;
 	win.data->mid = 1.0 / fabs(tan(1.0 / 6 * M_PI));
@@ -83,8 +85,6 @@ int			display_map_window(t_data *data, t_map *map)
 		return (0);
 	if (!set_sprite(&win))
 		return (0);
-	// sleep(3);
-	init_three_d_map(&win);
 	scan_map(data, &win);
 	set_rays(&win);
 	if (win.data->save == 1)

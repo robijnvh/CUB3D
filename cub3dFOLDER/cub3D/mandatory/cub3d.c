@@ -6,7 +6,7 @@
 /*   By: rvan-hou <rvan-hou@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/17 13:51:28 by rvan-hou       #+#    #+#                */
-/*   Updated: 2020/03/12 18:44:05 by rvan-hou      ########   odam.nl         */
+/*   Updated: 2020/03/13 14:46:59 by rvan-hou      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,32 +61,32 @@ int		set_arguments(int fd, t_data *data)
 	return (1);
 }
 
-// void	check_arguments(t_map *map, t_data *data)
-// {
-// 	int	i;
+void	check_arguments(t_map *map, t_data *data)
+{
+	int	i;
 
-// 	i = 0;
-// 	printf("R1: %d\n", data->rw);
-// 	printf("R2: %d\n", data->rh);
-// 	printf("NO: %s\n", data->no);
-// 	printf("SO: %s\n", data->so);
-// 	printf("WE: %s\n", data->we);
-// 	printf("EA: %s\n", data->ea);
-// 	printf("S: %s\n", data->s);
-// 	printf("floor: %lx\n", data->floor);
-// 	printf("ceiling: %lx\n", data->ceiling);
-// 	printf("F1: %d\n", data->fred);
-// 	printf("F2: %d\n", data->fgreen);
-// 	printf("F3: %d\n", data->fblue);
-// 	printf("C1: %d\n", data->cred);
-// 	printf("C2: %d\n", data->cgreen);
-// 	printf("C3: %d\n", data->cblue);
-// 	while (i < map->rows)
-// 	{
-// 		printf("LINE: %s\n", map->array[i]);
-// 		i++;
-// 	}
-// }
+	i = 0;
+	printf("R1: %d\n", data->rw);
+	printf("R2: %d\n", data->rh);
+	printf("NO: %s\n", data->no);
+	printf("SO: %s\n", data->so);
+	printf("WE: %s\n", data->we);
+	printf("EA: %s\n", data->ea);
+	printf("S: %s\n", data->s);
+	printf("floor: %lx\n", data->floor);
+	printf("ceiling: %lx\n", data->ceiling);
+	printf("F1: %d\n", data->fred);
+	printf("F2: %d\n", data->fgreen);
+	printf("F3: %d\n", data->fblue);
+	printf("C1: %d\n", data->cred);
+	printf("C2: %d\n", data->cgreen);
+	printf("C3: %d\n", data->cblue);
+	while (i < map->rows)
+	{
+		printf("LINE: %s\n", map->array[i]);
+		i++;
+	}
+}
 
 int		get_arguments(int fd, t_map *map, t_data *data)
 {
@@ -98,7 +98,7 @@ int		get_arguments(int fd, t_map *map, t_data *data)
 		return (return_error("WRONG MAP\n", 0));
 	if (set_arguments(fd, data) == 0)
 		return (0);
-	// check_arguments(map, data);
+	check_arguments(map, data);
 	close(fd);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: rvan-hou <rvan-hou@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/19 15:01:31 by rvan-hou       #+#    #+#                */
-/*   Updated: 2020/03/11 16:16:12 by rvan-hou      ########   odam.nl         */
+/*   Updated: 2020/03/13 14:40:24 by rvan-hou      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	find_ray_length3(t_vars *win)
 		win->data->first = 0;
 		win->data->i++;
 	}
-	win->data->hit_y += win->data->del_y;	
+	win->data->hit_y += win->data->del_y;
 }
 
 void	find_ray_length2(t_vars *win)

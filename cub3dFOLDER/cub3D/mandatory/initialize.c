@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   initialize.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: rvan-hou <rvan-hou@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/24 10:33:20 by rvan-hou          #+#    #+#             */
-/*   Updated: 2020/03/12 18:35:31 by rvan-hou         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   initialize.c                                       :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: rvan-hou <rvan-hou@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/02/24 10:33:20 by rvan-hou       #+#    #+#                */
+/*   Updated: 2020/03/13 11:03:05 by rvan-hou      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,6 @@ int		return_error(char *s, int i)
 		write(1, "ERROR: ", 7);
 	ft_putstr(s);
 	return (i);
-}
-
-void	my_mlx_pixel_put2(t_vars *win, int x, int y, int color)
-{
-	char	*dst;
-
-	dst = win->addr2 + (y * win->line_length2 + x * (win->bits_per_pixel2 / 8));
-	*(unsigned int*)dst = color;
 }
 
 void	clear_all_data(t_vars *win)

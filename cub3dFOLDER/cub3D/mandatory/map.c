@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   map.c                                              :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: rvan-hou <rvan-hou@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2020/01/19 12:51:55 by rvan-hou       #+#    #+#                */
-/*   Updated: 2020/03/12 18:24:03 by rvan-hou      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   map.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rvan-hou <rvan-hou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/19 12:51:55 by rvan-hou          #+#    #+#             */
+/*   Updated: 2020/03/13 15:35:48 by rvan-hou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ int		make_map(t_data *data, t_map *map, int i)
 	int	y;
 
 	y = 0;
+	if (!check_all_lines(map->str, i))
+		return (return_error("INVALID LINE IN FILE\n", 0));
 	map->array = (char**)malloc(sizeof(char*) * map->rows);
 	if (!map->array)
 		return (return_error("MALLOC FAIL\n", 0));
@@ -105,8 +107,6 @@ int		makearray(t_data *data, t_map *map)
 			map->rows++;
 		i--;
 	}
-	// if (!(check_char(map->str[i], map)))
-	// 	return (return_error("WRONG CHARACTER\n", 0));
 	if (map->startpoint == 'X')
 		return (return_error("MISSING STARTPOINT\n", 0));
 	while (map->str[i] != '\n' && map->str[i] != '\0')
@@ -115,5 +115,7 @@ int		makearray(t_data *data, t_map *map)
 		i++;
 	if (map->str[i] == '\0')
 		return (0);
+	// if (!check_all_lines(map->str, i))
+	// 	return (return_error("INVALID LINE IN FILE\n", 0));
 	return (make_map(data, map, i));
 }

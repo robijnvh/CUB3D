@@ -6,11 +6,34 @@
 /*   By: rvan-hou <rvan-hou@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/19 14:51:44 by rvan-hou       #+#    #+#                */
-/*   Updated: 2020/03/12 19:15:17 by rvan-hou      ########   odam.nl         */
+/*   Updated: 2020/03/13 15:35:18 by rvan-hou      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+int		check_all_lines(char *s, int end)
+{
+	int i;
+
+	i = 0;
+	while (i < end)
+	{
+		if (s[i] == 'R' || s[i] == 'N' || s[i] == 'S'
+		|| s[i] == 'W' || s[i] == 'E' || s[i] == 'F'
+		|| s[i] == 'C')
+		{
+			while (s[i] != '\n')
+				i++;
+			i++;
+		}
+		else if (s[i] == '\n')
+			i++;
+		else
+			return (0);
+	}
+	return (1);
+}
 
 int			check_file_type(char *str)
 {

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   store_utils.c                                      :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: rvan-hou <rvan-hou@student.42.fr>            +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2020/02/24 11:39:01 by rvan-hou       #+#    #+#                */
-/*   Updated: 2020/03/12 14:45:30 by rvan-hou      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   store_utils.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rvan-hou <rvan-hou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/24 11:39:01 by rvan-hou          #+#    #+#             */
+/*   Updated: 2020/03/13 13:58:05 by rvan-hou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,22 @@ void	free_full_array(t_map *map)
 	free(map->array);
 }
 
-void		clear_data_map(t_data *data, t_map *map)
+void	clear_data_map2(t_data *data, t_map *map)
+{
+	data->columns_cut = 0;
+	data->orientation = '.';
+	data->sqr_h = 0;
+	data->sqr_w = 0;
+	data->start_x = 0;
+	data->start_y = 0;
+	map->str = NULL;
+	map->rows = 0;
+	map->columns = 0;
+	map->startpoint = 'X';
+	map->array = NULL;
+}
+
+void	clear_data_map(t_data *data, t_map *map)
 {
 	data->max_columns = 0;
 	data->png = 0;
@@ -60,15 +75,5 @@ void		clear_data_map(t_data *data, t_map *map)
 	data->cgreen = -1;
 	data->cblue = -1;
 	data->valid = 0;
-	data->columns_cut = 0;
-	data->orientation = '.';
-	data->sqr_h = 0;
-	data->sqr_w = 0;
-	data->start_x = 0;
-	data->start_y = 0;
-	map->str = NULL;
-	map->rows = 0;
-	map->columns = 0;
-	map->startpoint = 'X';
-	map->array = NULL;
+	clear_data_map2(data, map);
 }
