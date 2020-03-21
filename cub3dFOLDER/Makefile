@@ -6,7 +6,7 @@
 #    By: rvan-hou <rvan-hou@student.42.fr>            +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/01/16 14:45:59 by rvan-hou       #+#    #+#                 #
-#    Updated: 2020/03/21 10:49:17 by robijnvanho   ########   odam.nl          #
+#    Updated: 2020/03/13 13:57:04 by rvan-hou      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,20 +27,27 @@ CC = gcc -O3 -Wall -Wextra -Werror -I.
 
 LIBS = -L mlx -lmlx -framework OpenGL -framework AppKit -lm
 
+MLX = libmlx.dylib
+
 
 NAME = cub3D
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
+$(NAME): $(MLX) $(OBJS)
 	$(CC) -o $(NAME) $(OBJS) $(LIBS)
 	./$(NAME)
 
+$(MLX):
+	@$(MAKE) -C mlx
+	@cp mlx/$(MLX) .
+
 clean:
+	@$(MAKE) -C mlx clean
 	rm -f $(OBJS)
 	rm -rf screenshot.bmp
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) $(MLX)
 
 re: fclean all

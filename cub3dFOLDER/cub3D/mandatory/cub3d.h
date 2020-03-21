@@ -6,7 +6,7 @@
 /*   By: rvan-hou <rvan-hou@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/09 16:04:08 by rvan-hou       #+#    #+#                */
-/*   Updated: 2020/03/13 15:35:30 by rvan-hou      ########   odam.nl         */
+/*   Updated: 2020/03/20 17:57:55 by robijnvanho   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,6 +158,8 @@ typedef struct		s_move
 
 typedef struct		s_vars
 {
+	int				og_rh;
+	int				og_rw;
 	float			on_wall;
 	double			angle_tmp;
 	void			*mlx;
@@ -237,12 +239,12 @@ void				set_orientation(char c, t_vars *win, int x, int y);
 void				my_mlx_pixel_put2(t_vars *win, int x, int y, int color);
 int					set_textures(t_vars *win);
 int					set_sprite(t_vars *win);
-void				put_texture(t_vars *win, double x1, double size);
+void				put_texture(t_vars *win, double x1, double size, double size_search);
 void				print_texture(t_vars *win, double x1, int size);
-void				print_tex_no(t_vars *win, double x1, double size);
-void				print_tex_so(t_vars *win, double x1, double size);
-void				print_tex_ea(t_vars *win, double x1, double size);
-void				print_tex_we(t_vars *win, double x1, double size);
+void				print_tex_no(t_vars *win, double x1, double size, double size_search);
+void				print_tex_so(t_vars *win, double x1, double size, double size_search);
+void				print_tex_ea(t_vars *win, double x1, double size, double size_search);
+void				print_tex_we(t_vars *win, double x1, double size, double size_search);
 void				set_ceiling(t_vars *win, int i, double x1);
 void				set_floor(t_vars *win, int i, double x1);
 void				move_player(t_vars *win, double move, double rotate,
@@ -251,7 +253,6 @@ void				move_player(t_vars *win, double move, double rotate,
 void				find_all_hits(t_vars *win, double tmp);
 void				create_three_d_map(t_vars *win, double x, double tmp);
 void				clear_all_data(t_vars *win);
-void				put_texture(t_vars *win, double x1, double size);
 
 void				create_bmp(char *name, char *addr, int width, int height);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);

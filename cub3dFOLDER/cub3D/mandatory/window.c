@@ -6,7 +6,7 @@
 /*   By: rvan-hou <rvan-hou@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/03 10:42:14 by rvan-hou       #+#    #+#                */
-/*   Updated: 2020/03/13 17:06:30 by rvan-hou      ########   odam.nl         */
+/*   Updated: 2020/03/21 12:02:00 by robijnvanho   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int			display_map_window(t_data *data, t_map *map)
 	win.data = data;
 	init_three_d_map(&win);
 	win.angle = 0.0;
-	win.window_mid = win.data->rh / 2;
+	win.window_mid = (win.data->rh / 2);	
 	win.data->mid = 1.0 / fabs(tan(1.0 / 6 * M_PI));
 	win.data->step = 1.0 / 10000.0;
 	if (!set_textures(&win))
@@ -89,7 +89,7 @@ int			display_map_window(t_data *data, t_map *map)
 	set_rays(&win);
 	if (win.data->save == 1)
 	{
-		create_bmp("screenshot.bmp", win.addr2, data->rw, data->rh);
+		create_bmp("screenshot.bmp", win.addr2, win.og_rw, win.og_rh);		
 		return (0);
 	}
 	mlx_put_image_to_window(win.mlx2, win.win2, win.img2, 0, 0);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   create_bmp.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: rvan-hou <rvan-hou@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/22 14:09:45 by robijnvanho       #+#    #+#             */
-/*   Updated: 2020/03/13 17:22:07 by rvan-hou         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   create_bmp.c                                       :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: rvan-hou <rvan-hou@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/02/22 14:09:45 by robijnvanho    #+#    #+#                */
+/*   Updated: 2020/03/21 11:59:16 by robijnvanho   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ void	create_bmp(char *name, char *addr, int width, int height)
 {
 	int fd;
 
+	printf("w: %i\n", width);
+	printf("h: %i\n", height);
 	fd = open(name, O_TRUNC | O_WRONLY | O_CREAT, 0777);
 	header_bmp(fd, width, height);
 	header_dip_bmp(fd, width, height);

@@ -6,7 +6,7 @@
 /*   By: rvan-hou <rvan-hou@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/24 10:33:20 by rvan-hou       #+#    #+#                */
-/*   Updated: 2020/03/13 11:03:05 by rvan-hou      ########   odam.nl         */
+/*   Updated: 2020/03/21 12:01:24 by robijnvanho   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,10 @@ void	init_three_d_map(t_vars *win)
 
 	h = 0;
 	w = 0;
+	win->og_rh = 0;
+	win->og_rw = 0;
+	win->og_rh = win->data->rh;
+	win->og_rw = win->data->rw;
 	win->mlx2 = mlx_init();
 	mlx_get_screen_size(win->mlx2, &w, &h);
 	if (win->data->rh > h)

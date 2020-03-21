@@ -6,7 +6,7 @@
 /*   By: rvan-hou <rvan-hou@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/19 15:01:31 by rvan-hou       #+#    #+#                */
-/*   Updated: 2020/03/13 14:40:24 by rvan-hou      ########   odam.nl         */
+/*   Updated: 2020/03/20 17:57:14 by robijnvanho   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,16 @@
 void	create_three_d_map(t_vars *win, double x, double tmp)
 {
 	double	size;
+	double	size_search;
 	int		i;
 
 	i = 0;
 	win->data->perp_wall_dist = (cos(tmp - win->angle) * win->data->ray_length);
 	size = (1.0 / win->data->perp_wall_dist) * win->window_mid;
+	size_search = size;
 	if (size > win->window_mid)
 		size = win->window_mid;
-	put_texture(win, x, size);
+	put_texture(win, x, size, size_search);
 	while (win->data->sprite == 1 && win->data->i > 0)
 	{
 		if (win->data->on_wall_sprite[win->data->i - 1] != -1)
