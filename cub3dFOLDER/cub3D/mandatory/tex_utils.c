@@ -6,7 +6,7 @@
 /*   By: rvan-hou <rvan-hou@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/20 12:00:49 by rvan-hou       #+#    #+#                */
-/*   Updated: 2020/03/21 13:06:36 by robijnvanho   ########   odam.nl         */
+/*   Updated: 2020/03/23 15:17:40 by robijnvanho   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	set_floor(t_vars *win, int i, double x1)
 {
 	i += win->window_mid;
+	// i--;
 	while (i < win->data->rh)
 	{
 		my_mlx_pixel_put2(win, x1, i, win->data->floor);
@@ -24,6 +25,7 @@ void	set_floor(t_vars *win, int i, double x1)
 
 void	set_ceiling(t_vars *win, int i, double x1)
 {
+	// i++;
 	while ((win->window_mid - i) >= 0)
 	{
 		my_mlx_pixel_put2(win, x1, win->window_mid - i, win->data->ceiling);

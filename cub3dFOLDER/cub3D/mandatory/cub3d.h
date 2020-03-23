@@ -6,7 +6,7 @@
 /*   By: rvan-hou <rvan-hou@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/09 16:04:08 by rvan-hou       #+#    #+#                */
-/*   Updated: 2020/03/20 17:57:55 by robijnvanho   ########   odam.nl         */
+/*   Updated: 2020/03/23 15:55:47 by robijnvanho   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -239,12 +239,12 @@ void				set_orientation(char c, t_vars *win, int x, int y);
 void				my_mlx_pixel_put2(t_vars *win, int x, int y, int color);
 int					set_textures(t_vars *win);
 int					set_sprite(t_vars *win);
-void				put_texture(t_vars *win, double x1, double size, double size_search);
+void				put_texture(t_vars *win, double x1, int size, double size_search);
 void				print_texture(t_vars *win, double x1, int size);
-void				print_tex_no(t_vars *win, double x1, double size, double size_search);
-void				print_tex_so(t_vars *win, double x1, double size, double size_search);
-void				print_tex_ea(t_vars *win, double x1, double size, double size_search);
-void				print_tex_we(t_vars *win, double x1, double size, double size_search);
+void				print_tex_no(t_vars *win, double x1, int size, double size_search);
+void				print_tex_so(t_vars *win, double x1, int size, double size_search);
+void				print_tex_ea(t_vars *win, double x1, int size, double size_search);
+void				print_tex_we(t_vars *win, double x1, int size, double size_search);
 void				set_ceiling(t_vars *win, int i, double x1);
 void				set_floor(t_vars *win, int i, double x1);
 void				move_player(t_vars *win, double move, double rotate,

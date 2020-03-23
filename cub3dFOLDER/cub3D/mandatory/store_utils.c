@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   store_utils.c                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: rvan-hou <rvan-hou@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/24 11:39:01 by rvan-hou          #+#    #+#             */
-/*   Updated: 2020/03/13 13:58:05 by rvan-hou         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   store_utils.c                                      :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: rvan-hou <rvan-hou@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/02/24 11:39:01 by rvan-hou       #+#    #+#                */
+/*   Updated: 2020/03/23 15:04:34 by robijnvanho   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void	clear_data_map(t_data *data, t_map *map)
 	data->rw = 0;
 	data->rh = 0;
 	data->no = NULL;
+	data->ea = NULL;
 	data->so = NULL;
 	data->we = NULL;
 	data->s = NULL;
