@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: rvan-hou <rvan-hou@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/01/17 13:51:28 by rvan-hou       #+#    #+#                */
-/*   Updated: 2020/03/13 14:46:59 by rvan-hou      ########   odam.nl         */
+/*   Created: 2020/01/17 13:51:28 by rvan-hou      #+#    #+#                 */
+/*   Updated: 2020/04/09 14:00:17 by robijnvanho   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,11 @@ int		makestring(int fd, t_map *map)
 
 int		set_arguments(int fd, t_data *data)
 {
-	int		ret;
 	char	*buf;
 
 	close(fd);
 	fd = open(data->input, O_RDONLY);
-	while ((ret = get_next_line(fd, &buf)) > 0)
+	while ((get_next_line(fd, &buf)) > 0)
 	{
 		if (!store_arguments(buf, data))
 		{
@@ -61,33 +60,6 @@ int		set_arguments(int fd, t_data *data)
 	return (1);
 }
 
-void	check_arguments(t_map *map, t_data *data)
-{
-	int	i;
-
-	i = 0;
-	printf("R1: %d\n", data->rw);
-	printf("R2: %d\n", data->rh);
-	printf("NO: %s\n", data->no);
-	printf("SO: %s\n", data->so);
-	printf("WE: %s\n", data->we);
-	printf("EA: %s\n", data->ea);
-	printf("S: %s\n", data->s);
-	printf("floor: %lx\n", data->floor);
-	printf("ceiling: %lx\n", data->ceiling);
-	printf("F1: %d\n", data->fred);
-	printf("F2: %d\n", data->fgreen);
-	printf("F3: %d\n", data->fblue);
-	printf("C1: %d\n", data->cred);
-	printf("C2: %d\n", data->cgreen);
-	printf("C3: %d\n", data->cblue);
-	while (i < map->rows)
-	{
-		printf("LINE: %s\n", map->array[i]);
-		i++;
-	}
-}
-
 int		get_arguments(int fd, t_map *map, t_data *data)
 {
 	if (makestring(fd, map) == 0)
@@ -98,7 +70,6 @@ int		get_arguments(int fd, t_map *map, t_data *data)
 		return (return_error("WRONG MAP\n", 0));
 	if (set_arguments(fd, data) == 0)
 		return (0);
-	check_arguments(map, data);
 	close(fd);
 	return (1);
 }
@@ -127,6 +98,7 @@ int		main(int argc, char **argv)
 	t_map	map;
 	t_data	data;
 
+	data.save = 0;
 	if (!init_arguments(argc, argv, &data))
 		return (0);
 	clear_data_map(&data, &map);
@@ -142,6 +114,5 @@ int		main(int argc, char **argv)
 	display_map_window(&data, &map);
 	free(map.str);
 	free_full_array(&map);
-	// while (1);
 	return (0);
 }

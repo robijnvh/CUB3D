@@ -6,12 +6,11 @@
 /*   By: rvan-hou <rvan-hou@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/01 11:05:25 by rvan-hou       #+#    #+#                */
-/*   Updated: 2020/01/19 13:10:27 by rvan-hou      ########   odam.nl         */
+/*   Updated: 2020/04/02 11:18:44 by robijnvanho   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
-#include <stdlib.h>
 
 static int		ft_len(char *s1, char *s2)
 {

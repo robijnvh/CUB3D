@@ -6,13 +6,11 @@
 /*   By: rvan-hou <rvan-hou@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/04 10:30:42 by rvan-hou       #+#    #+#                */
-/*   Updated: 2020/01/19 13:10:19 by rvan-hou      ########   odam.nl         */
+/*   Updated: 2020/04/02 11:18:37 by robijnvanho   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
-#include <stdlib.h>
-#include <stdio.h>
 
 static char			**free_machine(char **str, int i)
 {

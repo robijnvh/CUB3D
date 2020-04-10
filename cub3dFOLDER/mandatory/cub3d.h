@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: rvan-hou <rvan-hou@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/01/09 16:04:08 by rvan-hou       #+#    #+#                */
-/*   Updated: 2020/03/23 15:55:47 by robijnvanho   ########   odam.nl         */
+/*   Created: 2020/01/09 16:04:08 by rvan-hou      #+#    #+#                 */
+/*   Updated: 2020/04/10 11:43:27 by robijnvanho   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,9 @@ typedef struct		s_map
 
 typedef struct		s_list
 {
+	int				x_no;
+	float			i_tex_no;
+	int				tex_mid_no;
 	int				img_height_no;
 	int				img_width_no;
 	void			*mlx_no;
@@ -51,6 +54,9 @@ typedef struct		s_list
 	int				line_length_no;
 	int				endian_no;
 	char			*addr_no;
+	int				x_so;
+	float			i_tex_so;
+	int				tex_mid_so;
 	int				img_height_so;
 	int				img_width_so;
 	void			*mlx_so;
@@ -59,6 +65,9 @@ typedef struct		s_list
 	int				line_length_so;
 	int				endian_so;
 	char			*addr_so;
+	int				x_we;
+	float			i_tex_we;
+	int				tex_mid_we;
 	int				img_height_we;
 	int				img_width_we;
 	void			*mlx_we;
@@ -67,6 +76,9 @@ typedef struct		s_list
 	int				line_length_we;
 	int				endian_we;
 	char			*addr_we;
+	int				x_ea;
+	float			i_tex_ea;
+	int				tex_mid_ea;
 	int				img_height_ea;
 	int				img_width_ea;
 	void			*mlx_ea;
@@ -75,11 +87,14 @@ typedef struct		s_list
 	int				line_length_ea;
 	int				endian_ea;
 	char			*addr_ea;
+	int				x1;
+	float			h_win;
+	int				h_sp;
 	int				img_height_sp;
-	int				img_width_sp;
+	int				img_wid_sp;
 	void			*mlx_sp;
 	void			*img_sp;
-	int				bits_per_pixel_sp;
+	int				bpp_sp;
 	int				line_length_sp;
 	int				endian_sp;
 	char			*addr_sp;
@@ -111,7 +126,6 @@ typedef struct		s_data
 	char			orientation;
 	double			sqr_h;
 	double			sqr_w;
-
 	double			start_x;
 	double			start_y;
 	double			dist_x;
@@ -126,20 +140,18 @@ typedef struct		s_data
 	int				side;
 	double			mid;
 	double			perp_wall_dist;
-
 	double			tex_hit;
 	double			tex_x;
 	double			tex_y;
 	double			tex_size;
-
 	float			step;
 	float			sp_angle_l;
 	float			sp_angle_r;
 	int				sprite;
 	float			x;
 	float			y;
-	float			spritehit[10];
-	float			on_wall_sprite[10];
+	float			spritehit[20];
+	float			on_wall_sprite[20];
 	int				i;
 	int				first;
 	int				end;
@@ -158,6 +170,7 @@ typedef struct		s_move
 
 typedef struct		s_vars
 {
+	int				num;
 	int				og_rh;
 	int				og_rw;
 	float			on_wall;
@@ -239,12 +252,17 @@ void				set_orientation(char c, t_vars *win, int x, int y);
 void				my_mlx_pixel_put2(t_vars *win, int x, int y, int color);
 int					set_textures(t_vars *win);
 int					set_sprite(t_vars *win);
-void				put_texture(t_vars *win, double x1, int size, double size_search);
+void				put_texture(t_vars *win, double x1, int size,
+					double size_search);
 void				print_texture(t_vars *win, double x1, int size);
-void				print_tex_no(t_vars *win, double x1, int size, double size_search);
-void				print_tex_so(t_vars *win, double x1, int size, double size_search);
-void				print_tex_ea(t_vars *win, double x1, int size, double size_search);
-void				print_tex_we(t_vars *win, double x1, int size, double size_search);
+void				print_tex_no(t_vars *win, double x1, int size,
+					double size_search);
+void				print_tex_so(t_vars *win, double x1, int size,
+					double size_search);
+void				print_tex_ea(t_vars *win, double x1, int size,
+					double size_search);
+void				print_tex_we(t_vars *win, double x1, int size,
+					double size_search);
 void				set_ceiling(t_vars *win, int i, double x1);
 void				set_floor(t_vars *win, int i, double x1);
 void				move_player(t_vars *win, double move, double rotate,

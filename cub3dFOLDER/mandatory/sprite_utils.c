@@ -1,44 +1,68 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   sprite_utils.c                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: rvan-hou <rvan-hou@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/06 11:48:27 by rvan-hou          #+#    #+#             */
-/*   Updated: 2020/03/11 11:40:27 by rvan-hou         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   sprite_utils.c                                     :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: rvan-hou <rvan-hou@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/03/06 11:48:27 by rvan-hou      #+#    #+#                 */
+/*   Updated: 2020/04/09 14:04:39 by robijnvanho   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+void		make_sprite2(t_vars *win, int i, int x)
+{
+	char	*dst;
+
+	if (win->data->rh % 2 == 0 && win->num == 0)
+	{
+		dst = win->t.addr_sp + ((int)((win->t.h_win * (i - 1)) + win->t.h_sp)
+		* win->t.line_length_sp + win->t.x1);
+		if (*(unsigned int*)dst != 0x00000000)
+			my_mlx_pixel_put2(win, x, win->window_mid + i, *(unsigned int*)dst);
+		dst = win->t.addr_sp + ((int)(win->t.h_sp - (win->t.h_win * i))
+		* win->t.line_length_sp + win->t.x1);
+		if (*(unsigned int*)dst != 0x00000000)
+			my_mlx_pixel_put2(win, x, win->window_mid - i, *(unsigned int*)dst);
+	}
+	if (win->data->rh % 2 == 0)
+	{
+		dst = win->t.addr_sp + ((int)(win->t.h_sp - (win->t.h_win * i))
+		* win->t.line_length_sp + win->t.x1);
+		if (*(unsigned int*)dst != 0x00000000)
+			my_mlx_pixel_put2(win, x, win->window_mid - i, *(unsigned int*)dst);
+	}
+}
+
 void		make_sprite(t_vars *win, float distance, float on_wall, int x)
 {
 	int		i;
 	char	*dst;
-	int		x1;
-	int		h_sp;
-	float	h_win;
 
 	i = 0;
-	x1 = (int)(win->t.img_width_sp * on_wall) * (win->t.bits_per_pixel_sp / 8);
-	h_win = ((win->t.img_height_sp) / (distance * win->data->rh));
+	win->t.x1 = (int)(win->t.img_wid_sp * on_wall) * (win->t.bpp_sp / 8);
+	win->t.h_win = ((win->t.img_height_sp) / (distance * win->data->rh));
 	if (!(distance < 1))
 		distance = 0.999999;
 	win->data->end = (distance * (float)win->data->rh) / 2;
-	h_sp = (win->t.img_height_sp / 2);
+	win->t.h_sp = (win->t.img_height_sp / 2);
+	if (win->num == 0 && win->data->rh % 2 == 0)
+		win->data->end -= 1;
 	while (i <= win->data->end)
 	{
-		dst = win->t.addr_sp + ((int)((h_win * i) + h_sp)
-		* win->t.line_length_sp + x1);
+		dst = win->t.addr_sp + ((int)((win->t.h_win * i) + win->t.h_sp)
+		* win->t.line_length_sp + win->t.x1);
 		if (*(unsigned int*)dst != 0x00000000)
 			my_mlx_pixel_put2(win, x, win->window_mid + i, *(unsigned int*)dst);
-		dst = win->t.addr_sp + ((int)(h_sp - (h_win * i))
-		* win->t.line_length_sp + x1);
+		dst = win->t.addr_sp + ((int)(win->t.h_sp - (win->t.h_win * i))
+		* win->t.line_length_sp + win->t.x1);
 		if (*(unsigned int*)dst != 0x00000000)
 			my_mlx_pixel_put2(win, x, win->window_mid - i, *(unsigned int*)dst);
 		i++;
 	}
+	make_sprite2(win, i, x);
 }
 
 void		find_intersect_y(t_vars *win, int sign, int sign2, float step)

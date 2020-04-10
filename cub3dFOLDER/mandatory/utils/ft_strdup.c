@@ -6,12 +6,11 @@
 /*   By: rvan-hou <rvan-hou@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/28 14:12:13 by rvan-hou       #+#    #+#                */
-/*   Updated: 2020/03/13 15:06:55 by rvan-hou      ########   odam.nl         */
+/*   Updated: 2020/04/02 11:18:41 by robijnvanho   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
-#include <stdlib.h>
 
 int		check_for_spaces(const char *src, int i)
 {

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   init_textures.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: rvan-hou <rvan-hou@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/13 10:57:57 by rvan-hou          #+#    #+#             */
-/*   Updated: 2020/03/13 11:01:38 by rvan-hou         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   init_textures.c                                    :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: rvan-hou <rvan-hou@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/03/13 10:57:57 by rvan-hou      #+#    #+#                 */
+/*   Updated: 2020/04/09 14:05:10 by robijnvanho   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,22 @@ int		set_sprite(t_vars *win)
 	if (check_file_type(win->data->s))
 	{
 		if (mlx_png_file_to_image(win->t.mlx_sp, win->data->s,
-		&win->t.img_width_sp, &win->t.img_height_sp))
+		&win->t.img_wid_sp, &win->t.img_height_sp))
 			win->t.img_sp = mlx_png_file_to_image(win->t.mlx_sp, win->data->s,
-			&win->t.img_width_sp, &win->t.img_height_sp);
+			&win->t.img_wid_sp, &win->t.img_height_sp);
 		else
 			return (return_error("WRONG PATH SPRITE\n", 0));
 	}
 	else
 	{
 		if (mlx_xpm_file_to_image(win->t.mlx_sp, win->data->s,
-		&win->t.img_width_sp, &win->t.img_height_sp))
+		&win->t.img_wid_sp, &win->t.img_height_sp))
 			win->t.img_sp = mlx_xpm_file_to_image(win->t.mlx_sp, win->data->s,
-			&win->t.img_width_sp, &win->t.img_height_sp);
+			&win->t.img_wid_sp, &win->t.img_height_sp);
 		else
 			return (return_error("WRONG PATH SPRITE\n", 0));
 	}
-	win->t.addr_sp = mlx_get_data_addr(win->t.img_sp, &win->t.bits_per_pixel_sp,
+	win->t.addr_sp = mlx_get_data_addr(win->t.img_sp, &win->t.bpp_sp,
 	&win->t.line_length_sp, &win->t.endian_sp);
 	return (1);
 }

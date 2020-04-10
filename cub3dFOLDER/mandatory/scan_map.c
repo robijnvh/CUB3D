@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: rvan-hou <rvan-hou@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/02/19 14:51:44 by rvan-hou       #+#    #+#                */
-/*   Updated: 2020/03/13 15:35:18 by rvan-hou      ########   odam.nl         */
+/*   Created: 2020/02/19 14:51:44 by rvan-hou      #+#    #+#                 */
+/*   Updated: 2020/04/09 14:08:05 by robijnvanho   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int		check_all_lines(char *s, int end)
 	return (1);
 }
 
-int			check_file_type(char *str)
+int		check_file_type(char *str)
 {
 	int		i;
 
@@ -47,7 +47,7 @@ int			check_file_type(char *str)
 	return (0);
 }
 
-void		set_orientation(char c, t_vars *win, int x, int y)
+void	set_orientation(char c, t_vars *win, int x, int y)
 {
 	win->data->start_x = (double)x + 0.5;
 	win->data->start_y = (double)y + 0.5;
@@ -61,7 +61,7 @@ void		set_orientation(char c, t_vars *win, int x, int y)
 		win->angle = 1.5 * M_PI;
 }
 
-int			scan_map(t_data *data, t_vars *win)
+int		scan_map(t_data *data, t_vars *win)
 {
 	int		y;
 	int		x;

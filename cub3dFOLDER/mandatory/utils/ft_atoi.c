@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: rvan-hou <rvan-hou@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/28 15:12:23 by rvan-hou          #+#    #+#             */
-/*   Updated: 2020/02/25 14:11:06 by rvan-hou         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   ft_atoi.c                                          :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: rvan-hou <rvan-hou@student.42.fr>            +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2019/10/28 15:12:23 by rvan-hou      #+#    #+#                 */
+/*   Updated: 2020/04/09 14:12:13 by robijnvanho   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,19 @@ static long int	ft_amax(const char *str, unsigned long int res, int sign, int i)
 	return (res);
 }
 
+int				check_numbers(const char *str, int i)
+{
+	while (str[i] != '\0')
+	{
+		if (ft_strchr("0123456789", str[i]))
+			break ;
+		i++;
+	}
+	if (str[i] == '\0')
+		return (-1);
+	return (0);
+}
+
 int				ft_atoi(const char *str)
 {
 	int					i;
@@ -39,13 +52,7 @@ int				ft_atoi(const char *str)
 	res = 0;
 	if (!str[i])
 		return (0);
-	while (str[i] != '\0')
-	{
-		if (ft_strchr("0123456789", str[i]))
-			break ;
-		i++;
-	}
-	if (str[i] == '\0')
+	if (check_numbers(str, i) == -1)
 		return (-1);
 	i = 0;
 	while (str[i] && (str[i] == '\t' || str[i] == '\n' || str[i] == ' ' ||

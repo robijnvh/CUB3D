@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: rvan-hou <rvan-hou@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/02/22 14:09:45 by robijnvanho    #+#    #+#                */
-/*   Updated: 2020/03/21 11:59:16 by robijnvanho   ########   odam.nl         */
+/*   Created: 2020/02/22 14:09:45 by robijnvanho   #+#    #+#                 */
+/*   Updated: 2020/04/10 11:46:24 by robijnvanho   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,13 @@ void	create_bmp(char *name, char *addr, int width, int height)
 {
 	int fd;
 
-	printf("w: %i\n", width);
-	printf("h: %i\n", height);
+	if (width > 16384 || height > 16384)
+	{
+		return_error("MAX BMP SIZE IS 16384\n", 0);
+		return ;
+	}
+	if (width > 4000 || height > 4000)
+		return_error("THIS MIGHT TAKE A WHILE, RELAX...\n", 1);
 	fd = open(name, O_TRUNC | O_WRONLY | O_CREAT, 0777);
 	header_bmp(fd, width, height);
 	header_dip_bmp(fd, width, height);

@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: rvan-hou <rvan-hou@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/02/24 10:33:20 by rvan-hou       #+#    #+#                */
-/*   Updated: 2020/03/21 12:01:24 by robijnvanho   ########   odam.nl         */
+/*   Created: 2020/02/24 10:33:20 by rvan-hou      #+#    #+#                 */
+/*   Updated: 2020/04/09 13:16:21 by robijnvanho   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,9 @@ void	clear_all_data(t_vars *win)
 
 int		init_arguments(int argc, char **argv, t_data *data)
 {
-	if (argc < 2 || argc > 3)
+	if (argc < 2)
+		return (return_error("MISSING .CUB FILE\n", 0));
+	if (argc > 3)
 		return (return_error("INCORRECT ARGUMENT\n", 0));
 	if (!check_file(argv[1]))
 		return (return_error("WRONG FILE\n", 0));

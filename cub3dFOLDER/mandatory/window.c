@@ -5,19 +5,20 @@
 /*                                                     +:+                    */
 /*   By: rvan-hou <rvan-hou@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/02/03 10:42:14 by rvan-hou       #+#    #+#                */
-/*   Updated: 2020/03/23 15:16:39 by robijnvanho   ########   odam.nl         */
+/*   Created: 2020/02/03 10:42:14 by rvan-hou      #+#    #+#                 */
+/*   Updated: 2020/04/10 11:43:04 by robijnvanho   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void		set_rays(t_vars *win)
+void		set_rays(t_vars *win, int num)
 {
 	int		i;
 	double	check;
 	double	x;
 
+	win->num = num;
 	win->angle_tmp = win->angle;
 	x = 0;
 	check = 1;
@@ -57,7 +58,7 @@ int			press_key(int key, t_vars *win)
 		write(1, "GAME CLOSED\n", 12);
 		exit(0);
 	}
-	set_rays(win);
+	set_rays(win, 1);
 	mlx_put_image_to_window(win->mlx2, win->win2, win->img2, 0, 0);
 	return (key);
 }
@@ -78,7 +79,7 @@ int			display_map_window(t_data *data, t_map *map)
 	win.data = data;
 	init_three_d_map(&win);
 	win.angle = 0.0;
-	win.window_mid = (win.data->rh / 2);	
+	win.window_mid = (win.data->rh / 2);
 	win.data->mid = 1.0 / fabs(tan(1.0 / 6 * M_PI));
 	win.data->step = 1.0 / 10000.0;
 	if (!set_textures(&win))
@@ -86,10 +87,10 @@ int			display_map_window(t_data *data, t_map *map)
 	if (!set_sprite(&win))
 		return (0);
 	scan_map(data, &win);
-	set_rays(&win);
+	set_rays(&win, 0);
 	if (win.data->save == 1)
 	{
-		create_bmp("screenshot.bmp", win.addr2, win.og_rw, win.og_rh);		
+		create_bmp("screenshot.bmp", win.addr2, win.og_rw, win.og_rh);
 		return (0);
 	}
 	mlx_put_image_to_window(win.mlx2, win.win2, win.img2, 0, 0);
