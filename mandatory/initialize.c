@@ -6,7 +6,7 @@
 /*   By: rvan-hou <rvan-hou@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/24 10:33:20 by rvan-hou      #+#    #+#                 */
-/*   Updated: 2020/04/09 13:16:21 by robijnvanho   ########   odam.nl         */
+/*   Updated: 2020/04/14 12:03:37 by robijnvanho   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int		return_error(char *s, int i)
 	if (i == 0)
 		write(1, "ERROR: ", 7);
 	ft_putstr(s);
+	if (i == 2)
+		return (0);
 	return (i);
 }
 
@@ -50,7 +52,7 @@ void	clear_all_data(t_vars *win)
 int		init_arguments(int argc, char **argv, t_data *data)
 {
 	if (argc < 2)
-		return (return_error("MISSING .CUB FILE\n", 0));
+		return (return_error("ADD .CUB FILE\n", 2));
 	if (argc > 3)
 		return (return_error("INCORRECT ARGUMENT\n", 0));
 	if (!check_file(argv[1]))

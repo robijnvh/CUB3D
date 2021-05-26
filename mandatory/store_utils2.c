@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: rvan-hou <rvan-hou@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/03/13 13:55:00 by rvan-hou       #+#    #+#                */
-/*   Updated: 2020/03/13 13:56:45 by rvan-hou      ########   odam.nl         */
+/*   Created: 2020/03/13 13:55:00 by rvan-hou      #+#    #+#                 */
+/*   Updated: 2020/04/14 13:57:21 by robijnvanho   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,18 @@ int		get_color_data(char *buf, t_data *data)
 	if (buf[i] != '\0')
 		return (0);
 	return (1);
+}
+
+void	check_res_size(t_data *data)
+{
+	if (data->rw < 50)
+	{
+		data->rw = 50;
+		write(1, "RESOLUTION WIDTH TOO SMALL, CORRECTED TO 50\n", 44);
+	}
+	if (data->rh < 50)
+	{
+		data->rh = 50;
+		write(1, "RESOLUTION HEIGHT TOO SMALL, CORRECTED TO 50\n", 45);
+	}
 }

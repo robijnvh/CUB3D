@@ -6,7 +6,7 @@
 /*   By: rvan-hou <rvan-hou@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/17 13:51:28 by rvan-hou      #+#    #+#                 */
-/*   Updated: 2020/04/09 14:00:17 by robijnvanho   ########   odam.nl         */
+/*   Updated: 2020/04/14 14:08:08 by robijnvanho   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,8 +111,7 @@ int		main(int argc, char **argv)
 	}
 	else
 		return_error("MAP VALID\n", 1);
-	display_map_window(&data, &map);
 	free(map.str);
-	free_full_array(&map);
+	display_map_window(&data, &map);
 	return (0);
 }

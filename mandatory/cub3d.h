@@ -6,14 +6,13 @@
 /*   By: rvan-hou <rvan-hou@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/09 16:04:08 by rvan-hou      #+#    #+#                 */
-/*   Updated: 2020/04/10 11:43:27 by robijnvanho   ########   odam.nl         */
+/*   Updated: 2020/04/14 13:55:01 by robijnvanho   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include <stdio.h>
 # include <string.h>
 # include <unistd.h>
 # include <stdlib.h>
@@ -102,6 +101,9 @@ typedef struct		s_list
 
 typedef struct		s_data
 {
+	int				floor_check;
+	int				ceiling_check;
+	int				res_check;
 	int				max_columns;
 	int				save;
 	char			*input;
@@ -245,6 +247,7 @@ int					check_double(t_data *data, char c);
 void				fill_spaces(t_map *map, t_data *data);
 int					get_color_data(char *buf, t_data *data);
 int					get_color_data2(char *buf, t_data *data);
+void				check_res_size(t_data *data);
 
 void				init_three_d_map(t_vars *win);
 int					display_map_window(t_data *data, t_map *map);

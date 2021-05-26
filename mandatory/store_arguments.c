@@ -6,7 +6,7 @@
 /*   By: rvan-hou <rvan-hou@student.42.fr>            +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/22 14:06:42 by rvan-hou      #+#    #+#                 */
-/*   Updated: 2020/04/10 12:02:36 by robijnvanho   ########   odam.nl         */
+/*   Updated: 2020/04/14 13:54:32 by robijnvanho   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,9 @@ int		store_path(char *buf, t_data *data, char c)
 
 int		floor_to_color(char *buf, t_data *data)
 {
+	if (data->floor_check != 0)
+		return (return_error("DOUBLE COLOR DATA\n", 0));
+	data->floor_check = 1;
 	if (!get_color_data2(buf, data))
 		return (return_error("WRONG COLOR DATA\n", 0));
 	if (data->fblue < 0 || data->fblue > 255)
@@ -59,6 +62,9 @@ int		floor_to_color(char *buf, t_data *data)
 
 int		ceiling_to_color(char *buf, t_data *data)
 {
+	if (data->ceiling_check != 0)
+		return (return_error("DOUBLE COLOR DATA\n", 0));
+	data->ceiling_check = 1;
 	if (!get_color_data(buf, data))
 		return (return_error("WRONG COLOR DATA\n", 0));
 	if (data->cblue < 0 || data->cblue > 255)
@@ -81,6 +87,9 @@ int		get_resolution(char *buf, t_data *data)
 	int i;
 
 	i = 0;
+	if (data->res_check != 0)
+		return (return_error("DOUBLE RESOLUTION\n", 0));
+	data->res_check = 1;
 	while (buf[i] == 'R' || buf[i] == ' ')
 		i++;
 	data->rw = ft_atoi(&buf[i]);
@@ -97,10 +106,7 @@ int		get_resolution(char *buf, t_data *data)
 		i++;
 	if (buf[i] != '\0')
 		return (return_error("INVAlID RESOLUTION\n", 0));
-	if (data->rw < 50)
-		data->rw = 50;
-	if (data->rh < 50)
-		data->rh = 50;
+	check_res_size(data);
 	return (1);
 }
 
